@@ -10,4 +10,6 @@ if lastD > 5:
 elif lastD == 0:
     print(f"{lastD} and is 0")
 else:
-    print(f"-{lastD} and is less than 6 and not 0")
+    if number < 0:
+        print("-", end="")
+    print(f"{lastD} and is less than 6 and not 0")

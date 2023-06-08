@@ -13,13 +13,13 @@ if __name__ == "__main__":
     op = sys.argv[2]
 
     if op == "+":
-        print("{} {} {} = {}".format(num1, num2, op, add(num1, num2)))
+        print("{} {} {} = {}".format(num1, op, num2, add(num1, num2)))
     elif op == "-":
-        print("{} {} {} = {}".format(num1, num2, op, sub(num1, num2)))
+        print("{} {} {} = {}".format(num1, op, num2, sub(num1, num2)))
     elif op == "*":
-        print("{} {} {} = {}".format(num1, num2, op, mul(num1, num2)))
+        print("{} {} {} = {}".format(num1, op, num2, mul(num1, num2)))
     elif op == "/":
-        print("{} {} {} = {}".format(num1, num2, op, div(num1, num2)))
+        print("{} {} {} = {}".format(num1, op, num2, div(num1, num2)))
     else:
         print("Unknown opator. Available opators: +, -, * and /")
         sys.exit(1)

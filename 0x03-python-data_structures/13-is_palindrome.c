@@ -1,6 +1,5 @@
 #include "lists.h"
 
-
 /**
  * list_len - number of elements in a linked list
  * @h: linked list
@@ -23,7 +22,7 @@ int list_len(const listint_t *h)
  * @head: linked list
  * @vals: int array
  */
-void getListVal(listint_t *head, int vals[])
+void getListVal(listint_t *head, int *vals)
 {
 	int i = 0;
 
@@ -41,18 +40,26 @@ void getListVal(listint_t *head, int vals[])
  */
 int is_palindrome(listint_t **head)
 {
-	int len = list_len(*head);
-	int vals[len], i;
+	int *vals, len = list_len(*head), i;
+	listint_t *tmp = *head;
 
-	getListVal(*head, vals);
-	if (*head == NULL)
+	if (tmp == NULL || tmp->next == NULL)
 		return (1);
 
+	vals = malloc(sizeof(int) * len);
+	if (vals == NULL)
+		exit(1);
+
+	getListVal(tmp, vals);
 	for (i = 0; i < (len / 2); i++)
 	{
-		if ((*head)->n != vals[len - 1 - i])
+		if ((tmp)->n != vals[len - 1 - i])
+		{
+			free(vals);
 			return (0);
-		*head = (*head)->next;
+		}
+		tmp = (tmp)->next;
 	}
+	free(vals);
 	return (1);
 }

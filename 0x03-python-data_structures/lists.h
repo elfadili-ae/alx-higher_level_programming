@@ -20,7 +20,7 @@ typedef struct listint_s
 
 /***********/
 int list_len(const listint_t *h);
-void getListVal(listint_t *head, int *vals);
+void getListVal(listint_t *head, int *vals, int len);
 /**********/
 
 size_t print_listint(const listint_t *h);

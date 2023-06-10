@@ -22,14 +22,18 @@ int list_len(const listint_t *h)
  * @head: linked list
  * @vals: int array
  */
-void getListVal(listint_t *head, int *vals)
+void getListVal(listint_t *head, int *vals, int len)
 {
-	int i = 0;
+	int i = 0, j = 0;
 
-	while (head)
+	while (j < len)
 	{
-		vals[i] = head->n;
-		i++;
+		if (j > (len / 2) - 1)
+		{
+			vals[i] = head->n;
+			i++;
+		}
+		j++;
 		head = head->next;
 	}
 }
@@ -48,14 +52,14 @@ int is_palindrome(listint_t **head)
 		return (1);
 
 	len = list_len(tmp);
-	vals = malloc(sizeof(int) * len);
+	vals = malloc(sizeof(int) * (len / 2));
 	if (vals == NULL)
 		exit(1);
 
-	getListVal(tmp, vals);
+	getListVal(tmp, vals, len);
 	for (i = 0; i < (len / 2); i++)
 	{
-		if ((tmp)->n != vals[len - 1 - i])
+		if ((tmp)->n != vals[(len / 2) - 1 - i])
 		{
 			free(vals);
 			return (0);

@@ -33,6 +33,7 @@ void getListVal(listint_t *head, int *vals)
 		head = head->next;
 	}
 }
+
 /**
  * is_palindrome - check if the list is a palindrome
  * @head: linked list
@@ -40,12 +41,13 @@ void getListVal(listint_t *head, int *vals)
  */
 int is_palindrome(listint_t **head)
 {
-	int *vals, len = list_len(*head), i;
+	int *vals, len, i;
 	listint_t *tmp = *head;
 
 	if (tmp == NULL || tmp->next == NULL)
 		return (1);
 
+	len = list_len(tmp);
 	vals = malloc(sizeof(int) * len);
 	if (vals == NULL)
 		exit(1);

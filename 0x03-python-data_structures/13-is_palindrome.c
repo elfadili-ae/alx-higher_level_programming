@@ -45,13 +45,20 @@ void getListVal(listint_t *head, int *vals, int len)
  */
 int is_palindrome(listint_t **head)
 {
-	int *vals, len, i;
+	int *vals, len, i, isOdd = 0;
 	listint_t *tmp = *head;
 
 	if (tmp == NULL || tmp->next == NULL)
 		return (1);
 
 	len = list_len(tmp);
+	if (len % 2 == 0)
+		isOdd = 1;
+	if (len == 2 && tmp->n == tmp->next->n)
+		return (1);
+	else if (len == 2 && tmp->n != tmp->next->n)
+		return (0);
+
 	vals = malloc(sizeof(int) * (len / 2));
 	if (vals == NULL)
 		exit(1);
@@ -59,7 +66,7 @@ int is_palindrome(listint_t **head)
 	getListVal(tmp, vals, len);
 	for (i = 0; i < (len / 2); i++)
 	{
-		if ((tmp)->n != vals[(len / 2) - 1 - i])
+		if ((tmp)->n != vals[(len / 2) - isOdd - i])
 		{
 			free(vals);
 			return (0);

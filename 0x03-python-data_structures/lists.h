@@ -19,8 +19,7 @@ typedef struct listint_s
 } listint_t;
 
 /***********/
-int list_len(const listint_t *h);
-void getListVal(listint_t *head, int *vals, int len);
+listint_t *reverse_listint(listint_t **head);
 /**********/
 
 size_t print_listint(const listint_t *h);

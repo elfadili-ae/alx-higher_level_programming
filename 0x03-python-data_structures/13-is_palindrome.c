@@ -1,41 +1,29 @@
 #include "lists.h"
 
 /**
- * list_len - number of elements in a linked list
- * @h: linked list
- * Return: number of elements in @h
+ * reverse_listint - reverse a listint_t
+ * @head: listint_t's head
+ * Return: value of poped element
  */
-int list_len(const listint_t *h)
+listint_t *reverse_listint(listint_t **head)
 {
-	int nodes = 0;
+	listint_t *tmp1, *tmp2 = NULL;
 
-	while (h != NULL)
+	if (*head == NULL)
+		return (*head);
+
+	if ((*head)->next != NULL)
 	{
-		h = h->next;
-		nodes++;
-	}
-	return (nodes);
-}
-
-/**
- * getListVal - store list values in an array
- * @head: linked list
- * @vals: int array
- */
-void getListVal(listint_t *head, int *vals, int len)
-{
-	int i = 0, j = 0;
-
-	while (j < len)
-	{
-		if (j > (len / 2) - 1)
+		while ((*head)->next != NULL)
 		{
-			vals[i] = head->n;
-			i++;
+			tmp1 = (*head);
+			(*head) = (*head)->next;
+			tmp1->next = tmp2;
+			tmp2 = tmp1;
 		}
-		j++;
-		head = head->next;
+		(*head)->next = tmp1;
 	}
+	return (*head);
 }
 
 /**
@@ -45,34 +33,29 @@ void getListVal(listint_t *head, int *vals, int len)
  */
 int is_palindrome(listint_t **head)
 {
-	int *vals, len, i, isOdd = 0;
-	listint_t *tmp = *head;
+	listint_t *tmp = *head, *fast, *slow;
 
 	if (tmp == NULL || tmp->next == NULL)
 		return (1);
 
-	len = list_len(tmp);
-	if (len % 2 == 0)
-		isOdd = 1;
-	if (len == 2 && tmp->n == tmp->next->n)
-		return (1);
-	else if (len == 2 && tmp->n != tmp->next->n)
-		return (0);
-
-	vals = malloc(sizeof(int) * (len / 2));
-	if (vals == NULL)
-		exit(1);
-
-	getListVal(tmp, vals, len);
-	for (i = 0; i < (len / 2); i++)
+	for (fast = slow = tmp; fast && fast->next;)
 	{
-		if ((tmp)->n != vals[(len / 2) - isOdd - i])
-		{
-			free(vals);
-			return (0);
-		}
-		tmp = (tmp)->next;
+		slow = slow->next;
+		fast = fast->next->next;
 	}
-	free(vals);
+
+	if (fast != NULL)
+		fast = reverse_listint(&slow->next);
+	else
+		fast = reverse_listint(&slow);
+
+	while (fast)
+	{
+		if (fast->n != tmp->n)
+			return (0);
+
+		tmp = (tmp)->next;
+		fast = fast->next;
+	}
 	return (1);
 }

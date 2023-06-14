@@ -7,7 +7,7 @@ def roman_to_int(roman_string):
     while i >= 0:
         if roman_string[i] == 'I':
             if (i+1 < len(roman_string) and
-            (roman_string[i+1] == 'V' or roman_string[i+1] == 'X')):
+               (roman_string[i+1] == 'V' or roman_string[i+1] == 'X')):
                 num -= 1
             else:
                 num += 1
@@ -15,7 +15,7 @@ def roman_to_int(roman_string):
             num += 5
         elif roman_string[i] == 'X':
             if (i+1 < len(roman_string) and
-                (roman_string[i+1] == 'L' or roman_string[i+1] == 'C')):
+               (roman_string[i+1] == 'L' or roman_string[i+1] == 'C')):
                 num -= 10
             else:
                 num += 10
@@ -23,7 +23,7 @@ def roman_to_int(roman_string):
             num += 50
         elif roman_string[i] == 'C':
             if (i+1 < len(roman_string) and
-                 (roman_string[i+1] == 'D' or roman_string[i+1] == 'M')):
+               (roman_string[i+1] == 'D' or roman_string[i+1] == 'M')):
                 num -= 100
             else:
                 num += 100

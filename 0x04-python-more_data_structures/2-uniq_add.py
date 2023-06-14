@@ -2,5 +2,5 @@
 def uniq_add(my_list=[]):
     sum = 0
     for num in set(my_list):
-            sum += num
+        sum += num
     return sum

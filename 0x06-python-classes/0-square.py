@@ -1,11 +1,11 @@
-#!/usr/bin/pyhthon3
+#!/usr/bin/python3
 """
-Square module
+This a stupid empty class Square
 """
 
 
 class Square:
-    """"
-    represents a Square
+    """
+    empty class Square
     """
     pass

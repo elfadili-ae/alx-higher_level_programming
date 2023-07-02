@@ -1,0 +1,38 @@
+The text_indentation function
+======================
+
+Using text_indentation
+-------------------
+
+Importing the function:
+	  >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Check function's docstring:
+          >>> doc = __import__("5-text_indentation").text_indentation.__doc__
+	  >>> len(doc) > 1
+	  True
+
+case 1 (empty string):
+	  >>> text_indentation("")
+
+
+case 2 (number arg):
+       	  >>> text_indentation(13)
+	  Traceback (most recent call last):
+	  ...
+	  TypeError: text must be a string
+
+case 3 (no arg):
+	 >>> text_indentation()
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+case 4 (.?:):
+          >>> text_indentation(".?:")
+	  .
+	  <BLANKLINE>
+	  ?
+	  <BLANKLINE>
+	  :
+	  <BLANKLINE>

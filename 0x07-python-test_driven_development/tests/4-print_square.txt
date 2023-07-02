@@ -1,0 +1,39 @@
+The print_square function
+======================
+
+Using print_square
+-------------------
+
+Importing the function:
+	  >>> print_square = __import__('4-print_square').print_square
+
+Check function's docstring:
+          >>> doc = __import__("4-print_square").print_square.__doc__
+	  >>> len(doc) > 1
+	  True
+
+case 1 (normal):
+	  >>> print_square(5)
+    	  #####
+	  #####
+	  #####
+	  #####
+	  #####
+
+case 2 (float and negative):
+       	  >>> print_square(-5.4)
+	  Traceback (most recent call last):
+	  ...
+	  TypeError: size must be an integer
+
+case 3 (string):
+          >>> print_square("10")
+          Traceback (most recent call last):
+          ...
+          TypeError: size must be an integer
+
+case 3 (negative int):
+          >>> print_square(-10)
+          Traceback (most recent call last):
+          ...
+          ValueError: size must be >= 0

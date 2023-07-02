@@ -1,0 +1,29 @@
+The say_my_name function
+======================
+
+Using say_my_name
+-------------------
+
+Importing the function:
+	  >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Check function's docstring:
+          >>> doc = __import__("3-say_my_name").say_my_name.__doc__
+	  >>> len(doc) > 1
+	  True
+
+case 1 (name not a string):
+	  >>> say_my_name(["hi"])
+    	  Traceback (most recent call last):
+	  ...
+	  TypeError: first_name must be a string
+
+case 2 (normal case):
+       	  >>> say_my_name("optimus")
+	  My name is optimus 
+
+case 3 (las name not a string):
+       	  >>> say_my_name("optimus", 45)
+	  Traceback (most recent call last):
+          ...
+          TypeError: last_name must be a string

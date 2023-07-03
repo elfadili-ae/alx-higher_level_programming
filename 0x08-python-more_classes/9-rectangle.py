@@ -66,6 +66,7 @@ class Rectangle:
 
         return (self.__width * 2) + (self.__height * 2)
 
+    @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         """biggest rectangle
 

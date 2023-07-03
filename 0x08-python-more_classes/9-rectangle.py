@@ -10,8 +10,8 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         """initialize rectangle"""
-        self.height = height
         self.width = width
+        self.height = height
         Rectangle.number_of_instances += 1
 
     @property
@@ -115,12 +115,5 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
-        """square instance
-
-        Args:
-            size: size of the square
-
-        Returns:
-            rect instance
-        """
-        return cls(size, size)
+        """square instance"""
+        return (cls(size, size))

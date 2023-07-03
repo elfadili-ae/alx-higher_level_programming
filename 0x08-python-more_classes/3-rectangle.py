@@ -65,10 +65,12 @@ class Rectangle:
     def __str__(self):
         """print rectangle"""
         rect = ""
-        if self.__height > 0:
-            for i in range(0, self.__height):
-                for j in range(0, self.__width):
-                    rect += "#"
-                if i < self.__height - 1:
-                    rect += "\n"
+        if self.height == 0 or self.width == 0:
+            return rect
+
+        for i in range(0, self.height):
+            for j in range(0, self.width):
+                rect += "#"
+            if i < self.height - 1:
+                rect += "\n"
         return rect

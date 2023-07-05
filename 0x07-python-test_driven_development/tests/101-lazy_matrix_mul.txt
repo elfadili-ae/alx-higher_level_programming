@@ -12,6 +12,11 @@ Check function's docstring:
 	  >>> len(doc) > 1
 	  True
 
+Check function's docstring:
+          >>> doc = lazy_matrix_mul.__doc__
+          >>> len(doc) > 1
+          True
+
 case 1 (m_a not a list):
 	  >>> lazy_matrix_mul((1,2,3), [[1,2], [3,4]])
 	  Traceback (most recent call last):
@@ -99,3 +104,15 @@ case 13 ([[1, 2], [3, 4]] x [[1, 2], [3, 4]]):
 case 14 ([[1, 2]] x [[3, 4], [5, 6]]):
           >>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
           array([[13, 16]])
+
+case 15 (missing one arg):
+          >>> lazy_matrix_mul([[1.5,2], [3,4]])
+          Traceback (most recent call last):
+          ...
+          TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+case 16 (missing two args):
+          >>> lazy_matrix_mul()
+          Traceback (most recent call last):
+          ...
+          TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'

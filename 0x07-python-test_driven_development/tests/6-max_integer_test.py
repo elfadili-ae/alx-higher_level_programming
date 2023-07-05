@@ -1,11 +1,9 @@
 #!/usr/bin/python3
-import unittest
-
-max_integer = __import__("6-max_integer").max_integer
-
 """unittest for max_integer function
 """
 
+import unittest
+max_integer = __import__('6-max_integer').max_integer
 
 class TestMaxInteger(unittest.TestCase):
     """test cases for max_integer"""
@@ -13,12 +11,12 @@ class TestMaxInteger(unittest.TestCase):
     def test_ModuleDoc(self):
         """check the module's doc style"""
         doc = __import__("6-max_integer").__doc__
-        assertTrue(len(doc) > 1)
+        self.assertTrue(len(doc) > 1)
 
     def test_FunctionDoc(self):
         """check the function's doc style"""
         doc = max_integer.__doc__
-        assertTrue(len(doc) > 1)
+        self.assertTrue(len(doc) > 1)
 
     def test_emptyList(self):
         """empty list case"""
@@ -38,8 +36,8 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_listMixedNoInt(self):
         """list elements not all int"""
-        self.assertRaises(TypeError, max_integer([13, "h", 44, "C"]))
-
+        with self.assertRaises(TypeError):
+            max_integer([13, "h", 44, "C"])
 
 if __name__ == "__main__":
     unittest.main()

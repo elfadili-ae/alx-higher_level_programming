@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 import unittest
 
 max_integer = __import__("6-max_integer").max_integer
@@ -12,11 +12,13 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_ModuleDoc(self):
         """check the module's doc style"""
-        self.assertTrue(__import__("6-max_integer").__doc__)
+        doc = __import__("6-max_integer").__doc__
+        assertTrue(len(doc) > 1)
 
     def test_FunctionDoc(self):
         """check the function's doc style"""
-        self.assertTrue(__import__("6-max_integer").max_integer.__doc__)
+        doc = max_integer.__doc__
+        assertTrue(len(doc) > 1)
 
     def test_emptyList(self):
         """empty list case"""

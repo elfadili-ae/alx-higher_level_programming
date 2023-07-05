@@ -19,16 +19,20 @@ if num < 4:
 
 
 def solve():
+    """solve by backtracking"""
     solutions = []
     state = []
     search(state, solutions)
     displaySolution(solutions)
 
+
 def is_valid_state(state):
     """Check if it's a valid solution"""
     return len(state) == num
 
+
 def get_candidates(state):
+    """get candidates"""
     if not state:
         return range(num)
 
@@ -42,7 +46,9 @@ def get_candidates(state):
         candidates.discard(col - dist)
     return candidates
 
+
 def search(state, solutions):
+    """search for solutions"""
     if is_valid_state(state):
         solutions.append(state.copy())
         return
@@ -52,11 +58,14 @@ def search(state, solutions):
         search(state, solutions)
         state.remove(candidate)
 
+
 def displaySolution(solutions):
+    """display the solution"""
     for row in solutions:
         for i in range(len(row)):
             row[i] = [i, row[i]]
     for row in solutions:
         print(row)
+
 
 solve()

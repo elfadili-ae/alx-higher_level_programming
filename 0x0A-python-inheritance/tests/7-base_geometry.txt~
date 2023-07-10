@@ -1,0 +1,7 @@
+BaseGeometry class tests
+-------------------------
+
+check module's doc:
+      >>> doc = __import__("7-base_geometry").BaseGeometry
+      >>> print(len(doc) > 1)
+      True

@@ -27,7 +27,7 @@ class Student:
         Returns:
             student representation
         """
-        if type(attrs) == list and all(type(element) == str for element in attrs):
+        if type(attrs) == list and all(type(ele) == str for ele in attrs):
             dicto = {}
             for element in attrs:
                 if hasattr(self, element):

@@ -19,4 +19,3 @@ for arg in argv[1:]:
     items.append(arg)
 
 save_to_json_file(items, filename)
-print(items)

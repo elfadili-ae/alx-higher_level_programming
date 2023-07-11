@@ -2,8 +2,6 @@
 """This Module reads a file
 """
 
-import sys
-
 
 def read_file(filename=""):
     """read the file and print it to stdout
@@ -14,5 +12,5 @@ def read_file(filename=""):
     with open(filename, encoding="utf-8") as f:
         read_data = f.read()
 
-    sys.stdout.write(read_data)
+    print(read_data, end="")
     f.closed

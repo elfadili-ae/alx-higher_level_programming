@@ -5,37 +5,23 @@
 import unittest
 from models.base import Base
 
-
 class BaseTest(unittest.TestCase):
     """BaseTest"""
 
-    def setUp(self):
-        pass
-
-    def checkDoc(self):
-        """check class doc"""
-        doc = Base.__doc__
-        self.assertTrue(len(doc) > 1)
-
-    def checkInitDoc(self):
-        """init doc"""
-        doc = Base.__init__.__doc__
-        self.assertTrue(len(doc) > 1)
-
-    def checkCorrectIdOneObjNoId(self):
+    def test_CorrectIdOneObjNoId(self):
         """check if we get the correct id when no
         id is given"""
         b1 = Base()
-        self.assertEqual(1, b1.id)
+        self.assertEqual(b1.id, 1)
 
-    def checkCorrectIdTwoObjNoId(self):
+    def test_CorrectIdTwoObjNoId(self):
         """check if we get the correct id for a second obj
         with no id given"""
         b1 = Base()
         b2 = Base()
-        self.assertEqual(1, b2.id)
+        self.assertEqual(b1.id, b2.id - 1)
 
-    def checkCorrectIdThreeObjWithId(self):
+    def test_CorrectIdThreeObjWithId(self):
         """check if we get the correct id for a third obj
         with a given id"""
         b1 = Base()

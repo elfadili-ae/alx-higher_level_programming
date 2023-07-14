@@ -3,6 +3,9 @@
 """
 
 import unittest
+import sys
+from io import StringIO
+from unittest.mock import patch
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -128,5 +131,26 @@ class RectangleTest(unittest.TestCase):
         """testing None y"""
         with self.assertRaises(TypeError):
             r1 = Rectangle(13, 3, 2, None)
+    #---area--------------------------------
+    def test_areaPosZero(self):
+        r1 = Rectangle(3, 2)
+        self.assertEqual(r1.area(), 6)
+
+    def test_areaPosNotZero(self):
+        r1 = Rectangle(13, 2, 5, 10)
+        self.assertEqual(r1.area(), 26)
+    #---display-----------------------------
+    def test_displayRect1(self):
+        r1 = Rectangle(1, 1)
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            r1.display()
+        self.assertEqual(fakeOutput.getvalue().strip(), '#')
+
+    def test_displayRect2(self):
+        r1 = Rectangle(2, 2)
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            r1.display()
+        self.assertEqual(fakeOutput.getvalue().strip(), '##\n##')
+
 if __name__ == "__main__":
     unittest.main()

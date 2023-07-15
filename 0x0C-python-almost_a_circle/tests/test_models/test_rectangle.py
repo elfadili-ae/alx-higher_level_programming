@@ -151,6 +151,48 @@ class RectangleTest(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
             r1.display()
         self.assertEqual(fakeOutput.getvalue().strip(), '##\n##')
+    #---str----------------------------------
+    def test_str(self):
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            print(r1)
+        self.assertEqual(fakeOutput.getvalue(), '[Rectangle] (12) 2/1 - 4/6\n')
 
+    #---update--------------------------------
+    def test_updateWidth(self):
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        r1.update(width=1)
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            print(r1)
+        self.assertEqual(fakeOutput.getvalue(), '[Rectangle] (12) 2/1 - 1/6\n')
+
+    def test_updateHeight(self):
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        r1.update(height=1)
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            print(r1)
+        self.assertEqual(fakeOutput.getvalue(), '[Rectangle] (12) 2/1 - 4/1\n')
+
+    def test_updateX(self):
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        r1.update(x=1)
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            print(r1)
+        self.assertEqual(fakeOutput.getvalue(), '[Rectangle] (12) 1/1 - 4/6\n')
+
+    def test_updateY(self):
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        r1.update(y=2)
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            print(r1)
+        self.assertEqual(fakeOutput.getvalue(), '[Rectangle] (12) 2/2 - 4/6\n')
+
+    def test_updateID(self):
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        r1.update(id=13)
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            print(r1)
+        self.assertEqual(fakeOutput.getvalue(), '[Rectangle] (13) 2/1 - 4/6\n')
+        
 if __name__ == "__main__":
     unittest.main()

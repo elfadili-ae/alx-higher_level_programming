@@ -66,7 +66,6 @@ class Rectangle(Base):
         if "y" in kwargs:
             self.__y = kwargs["y"]
 
-
     @property
     def width(self):
         """get the width of the rectangle"""

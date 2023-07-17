@@ -6,6 +6,7 @@ import json
 import csv
 import turtle
 
+
 class Base:
     """Base class"""
 
@@ -52,7 +53,7 @@ class Base:
                 insta = cls(1, 1)
             elif cls.__name__ == "Square":
                 insta = cls(1)
-            val =insta.update(**dictionary)
+            val = insta.update(**dictionary)
             return insta
 
     @classmethod
@@ -83,7 +84,6 @@ class Base:
             writer = csv.DictWriter(f, fieldnames=fieldNames)
             for o in list_objs:
                 writer.writerow(o.to_dictionary())
-
 
     @classmethod
     def load_from_file_csv(cls):

@@ -9,6 +9,7 @@ from unittest.mock import patch
 from models.base import Base
 from models.rectangle import Rectangle
 
+
 class RectangleTest(unittest.TestCase):
     """BaseTest"""
 
@@ -31,7 +32,8 @@ class RectangleTest(unittest.TestCase):
         """testing Rectangle one arg"""
         with self.assertRaises(TypeError):
             r1 = Rectangle(3)
-    #---width---------------------------------------------
+# ---width---------------------------------------------
+
     def test_RectWidth(self):
         """testing getter of the Rectangle's width"""
         r1 = Rectangle(13, 3)
@@ -56,7 +58,8 @@ class RectangleTest(unittest.TestCase):
         """testing None width"""
         with self.assertRaises(TypeError):
             r1 = Rectangle(None, 3)
-    #---height-----------------------------------------
+# ---height-----------------------------------------
+
     def test_RectHeight(self):
         """testing getter of the Rectangle's height"""
         r1 = Rectangle(13, 3)
@@ -81,7 +84,8 @@ class RectangleTest(unittest.TestCase):
         """testing None height"""
         with self.assertRaises(TypeError):
             r1 = Rectangle(3, None)
-    #---x----------------------------------------------
+# ---x----------------------------------------------
+
     def test_RectXpos(self):
         """testing getter of the Rectangle's x"""
         r1 = Rectangle(13, 3, 2, 2)
@@ -106,7 +110,8 @@ class RectangleTest(unittest.TestCase):
         """testing None x"""
         with self.assertRaises(TypeError):
             r1 = Rectangle(13, 3, None, 2)
-    #---y--------------------------------------------
+# ---y--------------------------------------------
+
     def test_RectYpos(self):
         """testing getter of the Rectangle's y"""
         r1 = Rectangle(13, 3, 2, 2)
@@ -131,7 +136,8 @@ class RectangleTest(unittest.TestCase):
         """testing None y"""
         with self.assertRaises(TypeError):
             r1 = Rectangle(13, 3, 2, None)
-    #---area--------------------------------
+# ---area--------------------------------
+
     def test_areaPosZero(self):
         r1 = Rectangle(3, 2)
         self.assertEqual(r1.area(), 6)
@@ -139,7 +145,8 @@ class RectangleTest(unittest.TestCase):
     def test_areaPosNotZero(self):
         r1 = Rectangle(13, 2, 5, 10)
         self.assertEqual(r1.area(), 26)
-    #---display-----------------------------
+# ---display-----------------------------
+
     def test_displayRect1(self):
         r1 = Rectangle(1, 1)
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
@@ -151,14 +158,16 @@ class RectangleTest(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
             r1.display()
         self.assertEqual(fakeOutput.getvalue().strip(), '##\n##')
-    #---str----------------------------------
+# ---str----------------------------------
+
     def test_str(self):
         r1 = Rectangle(4, 6, 2, 1, 12)
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
             print(r1)
         self.assertEqual(fakeOutput.getvalue(), '[Rectangle] (12) 2/1 - 4/6\n')
 
-    #---update--------------------------------
+# ---update--------------------------------
+
     def test_updateWidth(self):
         r1 = Rectangle(4, 6, 2, 1, 12)
         r1.update(width=1)
@@ -193,6 +202,7 @@ class RectangleTest(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
             print(r1)
         self.assertEqual(fakeOutput.getvalue(), '[Rectangle] (13) 2/1 - 4/6\n')
-        
+
+
 if __name__ == "__main__":
     unittest.main()

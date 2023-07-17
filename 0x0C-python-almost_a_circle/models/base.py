@@ -4,6 +4,7 @@
 
 import json
 import csv
+import turtle
 
 class Base:
     """Base class"""
@@ -105,3 +106,40 @@ class Base:
                 return [cls.create(**ele) for ele in list_objs]
         except IOError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw Rectangles and Squares using the Turtle module.
+        """
+        tur = turtle.Turtle()
+        tur.screen.bgcolor("#000000")
+        tur.pensize(3)
+        tur.shape("arrow")
+        tur.speed(1)
+
+        tur.color("#2596be")
+        for rect in list_rectangles:
+            tur.showturtle()
+            tur.up()
+            tur.goto(rect.x, rect.y)
+            tur.down()
+            for i in range(2):
+                tur.forward(rect.width)
+                tur.left(90)
+                tur.forward(rect.height)
+                tur.left(90)
+            tur.hideturtle()
+
+        tur.shape("square")
+        tur.color("#fcdea0")
+        for sq in list_squares:
+            tur.showturtle()
+            tur.up()
+            tur.goto(sq.x, sq.y)
+            tur.down()
+            for i in range(2):
+                tur.forward(sq.width)
+                tur.left(90)
+                tur.forward(sq.height)
+                tur.left(90)
+            tur.hideturtle()

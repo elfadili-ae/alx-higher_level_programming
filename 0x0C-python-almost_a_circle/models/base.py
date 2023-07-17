@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""Base
+"""Base Module
 """
 
 import json
+import csv
 
 class Base:
     """Base class"""
@@ -61,5 +62,46 @@ class Base:
             with open(filename, 'r', encoding="utf-8") as f:
                 li = Base.from_json_string(f.read())
                 return [cls.create(**ele) for ele in li]
+        except IOError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """save file to CSV format"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w', encoding="utf-8") as f:
+            if list_objs is None or list_objs == []:
+                f.write("[]")
+                return
+
+            if cls.__name__ == "Rectangle":
+                fieldNames = ["id", "width", "height", "x", "y"]
+            else:
+                fieldNames = ["id", "size", "x", "y"]
+
+            writer = csv.DictWriter(f, fieldnames=fieldNames)
+            for o in list_objs:
+                writer.writerow(o.to_dictionary())
+
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """load data from the CSV file"""
+        try:
+            filename = cls.__name__ + ".csv"
+            with open(filename, 'r', encoding="utf-8") as f:
+                list_objs = []
+                if cls.__name__ == "Rectangle":
+                    fieldNames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldNames = ["id", "size", "x", "y"]
+
+                reader = csv.DictReader(f, fieldnames=fieldNames)
+                list_objs = []
+                for row in reader:
+                    o = {key: int(value) for key, value in row.items()}
+                    list_objs.append(o)
+
+                return [cls.create(**ele) for ele in list_objs]
         except IOError:
             return []

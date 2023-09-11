@@ -2,7 +2,7 @@
 
 const argv = process.argv;
 let max = 0;
-let max_2 = 0;
+let max2 = 0;
 
 if (argv.length > 3) {
   for (let i = 2; i < argv.length; i++) {
@@ -13,9 +13,9 @@ if (argv.length > 3) {
   }
   for (let i = 2; i < argv.length; i++) {
     const num = parseInt(argv[i]);
-    if (num != max && num > max_2) {
-      max_2 = num;
+    if (num !== max && num > max2) {
+      max2 = num;
     }
   }
 }
-console.log(max_2);
+console.log(max2);

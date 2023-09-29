@@ -14,10 +14,10 @@ if __name__ == "__main__":
 
     resp = requests.post(url, data=vals)
     try:
-        if resp.status_code == 204:
+        json = resp.json()
+        if json == {}:
             print("No result")
         else:
-            json = resp.json()
             print("[{}] {}".format(json["id"], json["name"]))
-    except requests.exceptions.JSONDecodeError:
+    except ValueError:
         print("Not a valid JSON")

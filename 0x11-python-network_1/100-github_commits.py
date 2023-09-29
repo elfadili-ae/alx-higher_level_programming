@@ -6,8 +6,8 @@ import sys
 
 
 if __name__ == "__main__":
-    username = "rails"
-    repo = "rails"
+    username = sys.argv[2]
+    repo = sys.argv[1]
 
     url = " https://api.github.com/repos/{}/{}/commits".format(username, repo)
 

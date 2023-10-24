@@ -3,20 +3,17 @@
 const request = require('request');
 
 request(process.argv[2], (err, response, body) => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  const data = JSON.parse(body);
+  if (!err) {
+    const data = JSON.parse(body).results;
+    const dataString = JSON.stringify(data);
 
-  let count = 0;
-  const pattern = /people\/18\//;
-  for (let i = 0; i < data.count; i++) {
-    for (let j = 0; j < data.results[i].characters.length; j++) {
-      if (pattern.test(data.results[i].characters[j])) {
-        count++;
-      }
+    const pattern = /people\/18\//g;
+    const matches = dataString.match(pattern);
+
+    if (matches) {
+      console.log(matches.length);
+    } else {
+      console.log(0);
     }
   }
-  console.log(count);
 });

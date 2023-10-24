@@ -10,20 +10,16 @@ request(url, (err, response, body) => {
     return;
   }
   const characters = JSON.parse(body).characters;
-
-  printItem(characters, 0);
+  printItems(characters, 0);
 });
 
-function printItem (item, index) {
-  request(item[index], (err, resp, bdy) => {
-    if (err) {
-      console.error(err);
-      return;
+function printItems (items, index) {
+  request(items[index], (error, response, body) => {
+    if (!error) {
+      console.log(JSON.parse(body).name);
+      if (index + 1 < items.length) {
+        printItems(items, index + 1);
+      }
     }
-    const dt = JSON.parse(bdy);
-    console.log(dt.name);
   });
-  if (index + 1 < item.length) {
-    printItem(item, index + 1);
-  }
 }

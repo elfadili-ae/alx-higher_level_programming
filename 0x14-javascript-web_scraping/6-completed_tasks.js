@@ -8,10 +8,9 @@ request(process.argv[2], (err, response, body) => {
 
     const result = {};
     data.forEach(item => {
-      if (!(item.userId in result)) {
-        result[item.userId] = 0;
-      }
-      if (item.completed) {
+      if (!(item.userId in result) && item.completed) {
+        result[item.userId] = 1;
+      } else if (item.completed) {
         result[item.userId] += 1;
       }
     });

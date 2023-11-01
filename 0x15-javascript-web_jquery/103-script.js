@@ -1,6 +1,14 @@
 //5ay hello to everybody!
 $("document").ready(() => {
     $("INPUT#btn_translate").click(translateHello);
+
+    $("INPUT#language_code").focus(() => {
+        $("INPUT#language_code").on("keydown", function (event) {
+            if (event.which === 13) {
+                translateHello();
+            }
+        });
+    })
 });
 
 function translateHello() {
